@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sync JS</title>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      button {
+        background-color: coral;
+        font-size: 2rem;
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+
+      p {
+        font-size: 2rem;
+      }
+    </style>
+</head>
+
+<body>
+    <button>
+        Haz click
+    </button>
+    
+    <script>
+        const btn = document.querySelector("button");
+        btn.addEventListener("click", () => {
+            alert("You clicked me!");
+            
+            let pElem = document.createElement("p");
+            pElem.textContent = "Tuve que esperar por el maldito Alert";
+            document.body.appendChild(pElem);
+        });
+        </script>
+
+  </body>
+</html>

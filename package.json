@@ -4,6 +4,9 @@
   "description": "TypeScript boilerplate",
   "main": "build/index.js",
   "scripts": {
+    "asynchrony:sync": "ts-node ./src/asynchrony/sync.ts",
+    "asynchrony:async:callback": "ts-node ./src/asynchrony/async.callback.ts",
+    "asynchrony:async:promise": "ts-node ./src/asynchrony/async.promise.ts",
     "prestart": "npm run build",
     "start": "node build/index.js",
     "dev": "npm run build -- --watch & nodemon build/index.js",
@@ -39,6 +42,7 @@
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.4",
     "typescript": "^3.7.2",
     "xo": "^0.25.3"
   },
@@ -70,5 +74,8 @@
     "extensions": [
       "ts"
     ]
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
   }
 }
