@@ -19,7 +19,7 @@ function runWithCallback(): void {
 			return;
 		}
 
-		console.log('Algo que no contemplamos ha pasado');
+		console.warn('Algo que no contemplamos ha pasado');
 	});
 
 	console.log('Hemos terminado de procesar las apis.');

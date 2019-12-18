@@ -7,6 +7,7 @@
     "asynchrony:sync": "ts-node ./src/asynchrony/sync.ts",
     "asynchrony:async:callback": "ts-node ./src/asynchrony/async.callback.ts",
     "asynchrony:async:promise": "ts-node ./src/asynchrony/async.promise.ts",
+    "asynchrony:async:timeout": "ts-node ./src/asynchrony/async.timeout.ts",
     "prestart": "npm run build",
     "start": "node build/index.js",
     "dev": "npm run build -- --watch & nodemon build/index.js",

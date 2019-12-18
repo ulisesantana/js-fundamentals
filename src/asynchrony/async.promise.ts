@@ -21,3 +21,5 @@ async function runAsync(): Promise<void> {
 		console.log('Hemos terminado con las apis.');
 	}
 }
+
+runAsync();

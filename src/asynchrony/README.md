@@ -68,7 +68,7 @@ getApis((err: Error | null, data?: object) => {
   console.log('Algo que no contemplamos ha pasado');
 });
 
-console.log('Hemos terminado de procesar las apis.');
+console.warn('Hemos terminado de procesar las apis.');
 ```
 
 Aquí el orden de los logs es el siguiente:
@@ -78,4 +78,31 @@ Hemos terminado de procesar las apis.
 Hemos recibido información de 1611 apis
 ```
 
-`getApis` es un función que acepta otra función como parámetro, lo que conocemos normalmente como callback.
+`getApis` es un función que acepta otra función como parámetro, lo que conocemos normalmente como callback. Aquí podemos ver cómo funciona:
+
+```ts
+type Callback = (err: Error | null, data?: any) => void;
+
+function getApis(cb: Callback): void {
+	fs.readFile(
+    path.resolve('src/apis.txt'), 
+    {encoding: 'utf8'}, 
+    (err, data) => {
+      if (err) {
+        return cb(err);
+      }
+
+      cb(null, JSON.parse(data));
+    }
+  );
+}
+```
+
+`getApis` abre un archivo de texto de forma asíncrona y si no hay ningún error, convierte el contenido del archivo a un JSON. 
+Este proceso funciona de manera diferente al anterior. La diferencia es que nosotros ejecutamos el código justo después del primer log, pero no significa que lo estemos ejecutando. Lo que realmente estamos haciendo es decirle a `getApis` que cuando haya hecho sus cosas y tenga la información que necesito, que se la pase al callback que le pasé por parámetro en forma de función anónima. En ese momento será cuando se procesará el callback y ejecutará nuestros logs y demás. 
+
+> Esta forma de gestionar callbacks en el que siempre pasamos como primer parámetro el error, es un patrón llamado patrón Error-First. En caso de que no haya error pasamos un `null` como primer parámetro y el resto de parámetros que sean necesarios. 
+
+Es como cuando te haces un tostada en la típica tostadora de palanca
+
+![](https://media.giphy.com/media/l3q2Ty3RWark8VgIw/giphy.gif)
