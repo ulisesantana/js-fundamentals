@@ -17,11 +17,11 @@ btn.addEventListener('click', () => {
 
 ![](./sync.gif)
 
-Podemos ver como hasta que no terminamos el proceso del `alert`, no comienza el renderizado del párrafo. Esto es porque JavaScript está basado en una cosa llamada *Event loop* que es el responsable de ejecutar los procesos. La particularidad del *Event loop* es que tiene un sólo hilo, por lo que si un proceso tarda mucho tiempo en concluir, acaba bloqueando la pila de procesos pendientes. 
+Podemos ver como hasta que no terminamos el proceso del `alert`, no comienza el renderizado del párrafo. Esto es porque JavaScript está basado en una cosa llamada **Event loop** que es el responsable de ejecutar los procesos. La particularidad del **Event loop** es que tiene un sólo hilo, por lo que si un proceso tarda mucho tiempo en concluir, acaba bloqueando la pila de procesos pendientes. 
 
 Justo eso es lo que pasa en el trozo de código que tenemos más arriba. Básicamente todo proceso que necesite una interacción del usuario para terminarse.
 
-Sin embargo, si tenemos procesos que no requieren de muchos recursos el *Event Loop* no se bloquea y funciona como se espera:
+Sin embargo, si tenemos procesos que no requieren de muchos recursos el **Event Loop** no se bloquea y funciona como se espera:
 
 ```ts
 function second(): void {
@@ -103,6 +103,6 @@ Este proceso funciona de manera diferente al anterior. La diferencia es que noso
 
 > Esta forma de gestionar callbacks en el que siempre pasamos como primer parámetro el error, es un patrón llamado patrón Error-First. En caso de que no haya error pasamos un `null` como primer parámetro y el resto de parámetros que sean necesarios. 
 
-Es como cuando te haces un tostada en la típica tostadora de palanca
+Es como cuando te haces un tostada en la típica tostadora de palanca, preparas la tostada y bajas la palanca. Mientras tanto puedes revisar  Twitter, preparar café, lo que tú quieras. Una vez la tostada está hecha la palanca hace saltar la tostada haciéndote saber que la tostada está lista para hacer lo que necesites. Este momento sería cuando nosotros aplicaríamos el callback porque el proceso por el que estábamos esperando ha terminado: hacer una tostada. Por otro lado, también vemos como mientras la tostada se hace otras cosas pasan como el café calentándose, los tweets cargándose en tu movil. En JavaScript y el **Event loop** pasa lo mismo
 
 ![](https://media.giphy.com/media/l3q2Ty3RWark8VgIw/giphy.gif)
